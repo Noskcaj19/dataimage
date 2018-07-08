@@ -1,0 +1,11 @@
+{
+  "name": "dataimage",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Noskcaj19/img-encoding.git",
+  "author": "Noskcaj <kcajdev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "module-name": "^0.0.1-security"
+  }
+}
