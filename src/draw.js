@@ -3,7 +3,6 @@ const DEPTH = 4;
 var canvas = $("#output")[0]
 var ctx = canvas.getContext('2d', { alpha: true });
 
-
 export default function draw_string(data) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (data.length == 0) {
@@ -22,8 +21,6 @@ export default function draw_string(data) {
     ctx.putImageData(new ImageData(array, size), 0, 0)
 }
 
-window.db = draw_string;
-
 function calc_dimensisions(data_len, components) {
     return Math.ceil(Math.sqrt(Math.ceil(data_len / components)))
 }
@@ -41,17 +38,15 @@ function u8array_from_str(data, _length) {
     let i = 0
     let data_index = 0
     while (i < data_length) {
-        // if (((i + 1) % 4) == 0) {
-        // array[i] = 255
-        // } else {
-        array[i] = data[data_index].charCodeAt(0)
+        if (((i + 1) % 4) == 0) {
+            array[i] = 255
+        } else {
+            array[i] = data[data_index].charCodeAt(0)
 
-        data_index++
-        // }
+            data_index++
+        }
         i++
     }
-    console.log(array);
-
 
     return array
 }

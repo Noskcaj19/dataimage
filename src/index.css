@@ -5,6 +5,11 @@ canvas {
     height: 100%;
 }
 
+img {
+    image-rendering: pixelated;
+}
+
 #decode_preview {
-    border: 1px solid black;
+    /* width: 25vw; */
+    height: 25vw;
 }

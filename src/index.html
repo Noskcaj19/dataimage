@@ -26,11 +26,11 @@
 <body>
     <!-- Mode tabs -->
     <div class="ui top attached tabular menu">
-        <a class="item" data-tab="encode">Encode</a>
-        <a class="active item" data-tab="decode">Decode</a>
+        <a class="active item" data-tab="encode">Encode</a>
+        <a class="item" data-tab="decode">Decode</a>
     </div>
     <!-- Encode page -->
-    <div class="ui bottom attached tab segment" data-tab="encode">
+    <div class="ui bottom attached active tab segment" data-tab="encode">
         <div class="ui two column grid">
             <!-- Encoding input -->
             <div class="column">
@@ -71,7 +71,7 @@
     </div>
 
     <!-- Decode page -->
-    <div class="ui bottom attached active tab segment" data-tab="decode">
+    <div class="ui bottom attached tab segment" data-tab="decode">
         <!-- Decode upload -->
         <div class="ui segment">
             <div class="ui two column grid">
@@ -79,7 +79,7 @@
                 <div class="column">
                     <form class="ui form">
                         <div class="field">
-                            <input type="file" id="file_upload_decode" />
+                            <input type="file" id="file_upload_decode" accept="image/*" />
                         </div>
                         <button class="ui primary button" id="decode_file_submit" type="submit">Submit</button>
                     </form>
@@ -90,10 +90,14 @@
                 </div>
             </div>
         </div>
+        <!-- Decoding output -->
+        <form class="ui form">
+            <textarea id="decoding_output" readonly=true></textarea>
+        </form>
     </div>
 
 
-    <script src=" ./index.js "></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
