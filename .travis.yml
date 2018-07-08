@@ -3,7 +3,7 @@ node_js:
 - stable
 script:
 - npm install -g parcel-bundler
-- parcel build src/index.html
+- parcel build src/index.html --public-url .
 deploy:
   provider: pages
   skip-cleanup: true
