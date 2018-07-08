@@ -39,4 +39,5 @@ function process_decode(data_uri) {
 
     let ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0)
+
 }

@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- stable
+script:
+- npm install -g parcel-bundler
+- parcel build src/index.html
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GH_TOKEN"
+  local-dir: dist
+  on:
+    branch: master
+env:
+  global:
+    secure: E4EqYovwyYHpSuhggQAXp7EYS0nTz3hArfEBrCaRmmKxKa1S+StjA3yQ56dqQuFhFrRX2RpUfx0te9ghsnObUMb445qdQnp5oAakqxQnuvJrKDrQTSDIG+qC/C34CVTg/gJXRUwQggvn2ZgcGcL10vUDPckTmKn3j8yqwMNVBExsD30Mw34/FmIRLYZ45XasQHEIpIBnx4ZVFtgB1d8errCHtAFBkUT9aWukZ3qaxO/YeuGUJzqECqjZ8jWKLDbLr3/ccZeQG17nvGEBsSDws4e+awadrPgj+WRN1kS5VBsafz2F3JvvQssz4f5qCEV9rPY5x4wXDlw9rl5FI3R1NubOJW/aiultntbH6fSNK3o88lRxQUdrMtsW1QmYeKTlAI/iulXos34wTcWqKidcGaY3bV8W8OfpJk4HoKQiQdOn4IcOIQhCAQyHHDSleF4KxAS2mZrmHCiWqCRG68FeQc5dsxwp7CzeamC3Do8YRoJJzfraAUD4U8Ze6S90+RQ9WSaNH0x944/XTeMqe5s4DpiaaVXn/sSwDucd++JhEv9Cycqt2eMmKC5EXxgbpM5Y5Q/JEkTSz+8QdkMYbdHfVE6/IA3YhIuX6t+z+6RNHPKqya7wnvURVskxpGyMEYLkgc6UVmGOZ63f23jorqFaVgdT7DwwetRaQo3kieXfkro=
