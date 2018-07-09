@@ -1,44 +1,65 @@
-import draw_string from './draw'
 import { decode_image } from './decode'
+import { encode_string } from './encode'
 
-export function handle_encode_submit() {
+import { Image } from 'image-js'
+
+export function encode_file_changed() {
+    load_encode_file(function (e) {
+        update_encode_preview(e.target.result)
+        // Set suggested download filename
+        $("#download_link")[0].download = $("#file_upload_encode")[0].value.replace("C:\\fakepath\\", "")
+    })
+}
+
+/**
+ * Updates live image with an encoded string
+ * @param {string} string String to encode
+ */
+export function update_encode_preview(string) {
+    let img = encode_string(string)
+
+    if (img != null) {
+        let canvas = img.getCanvas()
+        // Make sure we can access again
+        canvas.id = "output"
+        $('#output').replaceWith(canvas)
+
+        $("#download_link")[0].href = img.toDataURL()
+    }
+}
+
+function load_encode_file(callback) {
     let file_upload = $('#file_upload_encode')[0]
     if (file_upload.files.length) {
         let reader = new FileReader()
 
-        reader.onload = function (e) {
-            draw_string(e.target.result)
-        }
-
+        reader.onload = callback
         reader.readAsBinaryString(file_upload.files[0])
     } else {
         console.info("No files")
     }
 }
 
-export function handle_decode_submit() {
-    let img = $("#decode_preview")[0]
-    let canvas = document.createElement('canvas')
-    canvas.width = img.naturalWidth
-    canvas.height = img.naturalHeight
+/**
+ * Decodes image and updates output text
+ */
+export function decode_file_changed() {
+    load_decode_file(function (e) {
+        let preview = $("#decode_preview")[0]
+        preview.src = e.target.result
 
-    let ctx = canvas.getContext("2d")
-    ctx.drawImage(img, 0, 0)
-    let img_data = ctx.getImageData(0, 0, img.naturalWidth, img.naturalHeight)
-
-    decode_image(img_data.data)
+        Image.load(e.target.result).then(img => {
+            $("#decoding_output").text(decode_image(img))
+        })
+    })
 }
 
-export function update_decode_preview() {
+function load_decode_file(callback) {
     let file_upload = $('#file_upload_decode')[0]
     if (file_upload.files.length) {
         let reader = new FileReader()
 
-        reader.onload = function (e) {
-            let img = $("#decode_preview")[0]
-            img.src = e.target.result
-        }
-
+        reader.onload = callback
         reader.readAsDataURL(file_upload.files[0])
     }
 }

@@ -5,6 +5,6 @@
   "author": "Noskcaj <kcajdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "module-name": "^0.0.1-security"
+    "image-js": "^0.21.0"
   }
 }

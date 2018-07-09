@@ -1,11 +1,18 @@
-export function decode_image(img_data) {
-    let output_area = $("#decoding_output")
+import { Image } from "../node_modules/image-js";
 
-    let enc = new TextDecoder("utf-8")
+/**
+ * Decode a image to a string
+ * @param {Image} image Image to decode
+ * @returns {string}
+ */
+export function decode_image(image) {
+    let decoder = new TextDecoder("utf-8")
 
-    let text = enc.decode(img_data.filter((value, index) => {
-        return ((index + 1) % 4 != 0);
-    }));
+    // TODO: Add alpha option
+    // let text = decoder.decode(image.data.filter((value, index) => {
+    //     return ((index + 1) % 4 != 0);
+    // }));
+    let text = decoder.decode(image.data)
 
-    output_area.text(text)
+    return text
 }
