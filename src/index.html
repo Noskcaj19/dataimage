@@ -20,83 +20,99 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet"> -->
 
     <!-- Custom style -->
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
-    <!-- Mode tabs -->
-    <div class="ui top attached tabular menu">
-        <a class="active item" data-tab="encode">Encode</a>
-        <a class="item" data-tab="decode">Decode</a>
-    </div>
-    <!-- Encode page -->
-    <div class="ui bottom attached active tab segment" data-tab="encode">
-        <div class="ui two column grid">
-            <!-- Encoding input -->
-            <div class="column">
-                <!-- Encode mode tabs -->
-                <div class="ui top attached tabular menu">
-                    <a class="active item" data-tab="text">Text Entry</a>
-                    <a class="item" data-tab="upload">Any File</a>
-                </div>
-
-                <!-- Text encode -->
-                <div class="ui bottom attached active tab segment" data-tab="text">
-                    <form class="ui form">
-                        <div class="field">
-                            <label>Text</label>
-                            <textarea id="text_area"></textarea>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- File encode -->
-                <div class="ui bottom attached tab segment" data-tab="upload">
-                    <form class="ui form">
-                        <div class="field">
-                            <input type="file" id="file_upload_encode" />
-                        </div>
-                    </form>
-                </div>
-                <a id="download_link" class="ui primary button" download>Save image</a>
-            </div>
-
-            <!-- Encoding output -->
-            <div class="column">
-                <canvas id="output" height=50 width=50>
-                    <img class="ui image" src="http://via.placeholder.com/300x300">
-                </canvas>
-            </div>
+    <!-- Header -->
+    <div class="ui center aligned container">
+        <div class="ui bottom attached segment">
+            <h1>Data Images</h1>
+            <p>Convert anything to images</p>
         </div>
     </div>
 
-    <!-- Decode page -->
-    <div class="ui bottom attached tab segment" data-tab="decode">
-        <!-- Decode upload -->
-        <div class="ui segment">
+    <div class="ui section divider"></div>
+
+    <div class="ui container">
+        <!-- Mode tabs -->
+        <div class="ui top attached tabular menu">
+            <a class="active item" data-tab="encode">Encode</a>
+            <a class="item" data-tab="decode">Decode</a>
+        </div>
+        <!-- Encode page -->
+        <div class="ui bottom attached active tab segment" data-tab="encode">
             <div class="ui two column grid">
-                <!-- File upload -->
+                <!-- Encoding input -->
                 <div class="column">
-                    <form class="ui form">
-                        <div class="field">
-                            <input type="file" id="file_upload_decode" accept="image/*" />
-                        </div>
-                    </form>
+                    <!-- Encode mode tabs -->
+                    <div class="ui top attached tabular menu">
+                        <a class="active item" data-tab="text">Text Entry</a>
+                        <a class="item" data-tab="upload">Any File</a>
+                    </div>
+
+                    <!-- Text encode -->
+                    <div class="ui bottom attached active tab segment" data-tab="text">
+                        <form class="ui form">
+                            <div class="field">
+                                <label>Text</label>
+                                <textarea id="text_area"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- File encode -->
+                    <div class="ui bottom attached tab segment" data-tab="upload">
+                        <form class="ui form">
+                            <div class="field">
+                                <input type="file" id="file_upload_encode" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ui center aligned container">
+                        <a id="download_link" class="ui primary button" download>Save image</a>
+                    </div>
                 </div>
-                <!-- Image preview -->
+
+                <!-- Encoding output -->
                 <div class="column">
-                    <img id="decode_preview">
+                    <canvas id="output" height=50 width=50>
+                        <img class="ui image" src="http://via.placeholder.com/300x300">
+                    </canvas>
                 </div>
             </div>
         </div>
-        <!-- Decoding output -->
-        <form class="ui form">
-            <textarea id="decoding_output" readonly=true></textarea>
-        </form>
+
+        <!-- Decode page -->
+        <div class="ui bottom attached tab segment" data-tab="decode">
+            <!-- Decode upload -->
+            <div class="ui segment">
+                <div class="ui two column grid">
+                    <!-- File upload -->
+                    <div class="column">
+                        <form class="ui form">
+                            <div class="field">
+                                <input type="file" id="file_upload_decode" accept="image/*" />
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Image preview -->
+                    <div class="column">
+                        <img id="decode_preview">
+                    </div>
+                </div>
+            </div>
+            <!-- Decoding output -->
+            <form class="ui form">
+                <label>Output</label>
+                <textarea id="decoding_output" readonly=true></textarea>
+            </form>
+        </div>
+
+
     </div>
 
-
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

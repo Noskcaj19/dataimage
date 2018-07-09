@@ -1,4 +1,4 @@
-import { Image } from "../node_modules/image-js";
+import { Image } from "image-js"
 
 /**
  * Decode a image to a string
@@ -10,8 +10,8 @@ export function decode_image(image) {
 
     // TODO: Add alpha option
     // let text = decoder.decode(image.data.filter((value, index) => {
-    //     return ((index + 1) % 4 != 0);
-    // }));
+    //     return ((index + 1) % 4 != 0)
+    // }))
     let text = decoder.decode(image.data)
 
     return text
