@@ -3,7 +3,7 @@ import { Image } from "image-js"
 /**
  * Decode a image to a string
  * @param {Image} image Image to decode
- * @returns {string}
+ * @returns {String}
  */
 export function decode_image(image) {
     let decoder = new TextDecoder("utf-8")

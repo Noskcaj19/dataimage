@@ -3,6 +3,9 @@ import { encode_string } from './encode'
 
 import { Image } from 'image-js'
 
+/**
+ * Handles a new file to encode
+ */
 export function encode_file_changed() {
     load_encode_file(function (e) {
         update_encode_preview(e.target.result)
@@ -13,7 +16,7 @@ export function encode_file_changed() {
 
 /**
  * Updates live image with an encoded string
- * @param {string} string String to encode
+ * @param {String} string String to encode
  */
 export function update_encode_preview(string) {
     let img = encode_string(string)
@@ -28,6 +31,10 @@ export function update_encode_preview(string) {
     }
 }
 
+/**
+ * Load submitted file and get the content
+ * @param {function(ProgressEvent):void} callback - Called when file load completes
+ */
 function load_encode_file(callback) {
     let file_upload = $('#file_upload_encode')[0]
     if (file_upload.files.length) {
@@ -54,6 +61,10 @@ export function decode_file_changed() {
     })
 }
 
+/**
+ * Load submitted file and get the content
+ * @param {function(ProgressEvent):void} callback - Called when file load completes
+ */
 function load_decode_file(callback) {
     let file_upload = $('#file_upload_decode')[0]
     if (file_upload.files.length) {

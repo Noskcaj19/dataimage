@@ -2,6 +2,10 @@ import * as actions from './actions'
 
 $(function () {
     $('.menu .item').tab()
+    $('.ui.radio.checkbox').checkbox({
+        onChecked: function () {
+        }
+    })
 })
 
 $('#file_upload_decode').change(function () {
