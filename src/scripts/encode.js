@@ -20,8 +20,6 @@ export function encode_string(data) {
     let size = calc_dimensisions(data_len, DEPTH);
 
     let array = u8array_from_str(data, data_len + amount_padding_needed(data_len, size, DEPTH))
-    console.log(array);
-
 
     let _canvas = document.createElement('canvas');
     _canvas.width = _canvas.height = size;

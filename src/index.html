@@ -6,8 +6,6 @@
 
     <!-- Meta -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Vendor -->
     <!-- jQuery -->
@@ -91,25 +89,50 @@
                     <!-- File upload -->
                     <div class="column">
                         <form class="ui form">
+                            <!-- Decoding input -->
                             <div class="field">
                                 <input type="file" id="file_upload_decode" accept="image/*" />
                             </div>
+                            <!-- Output type -->
+                            <div class="inline fields" id="output_format">
+                                <label for="output_format">Output type</label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="output_format" checked="" tabindex="0" class="hidden" value="file">
+                                        <label>File</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="output_format" tabindex="0" class="hidden" value="text">
+                                        <label>Text</label>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
+
                     <!-- Image preview -->
                     <div class="column">
                         <img id="decode_preview">
                     </div>
                 </div>
             </div>
-            <!-- Decoding output -->
-            <form class="ui form">
-                <label>Output</label>
-                <textarea id="decoding_output" readonly=true></textarea>
-            </form>
+
+            <!-- Decoding output plain text -->
+            <div hidden id="output_section_text">
+                <form class="ui form">
+                    <label>Output</label>
+                    <textarea id="decoding_output" readonly=true></textarea>
+                </form>
+            </div>
+
+            <!-- Decoding output files -->
+            <div id="output_section_file">
+                <a class="ui primary button" id="decoded_download" download>Save</a>
+            </div>
+
         </div>
-
-
     </div>
 
     <script src="./scripts/index.js"></script>
