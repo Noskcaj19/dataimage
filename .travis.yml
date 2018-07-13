@@ -5,7 +5,7 @@ cache:
   directories:
     - "node_modules"
 script:
-- npm install -g parcel-bundler
+- yarn global add parcel-bundler
 - parcel build src/index.html --public-url .
 deploy:
   provider: pages
