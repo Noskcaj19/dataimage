@@ -6,7 +6,7 @@ cache:
     - "node_modules"
 script:
 - yarn global add parcel-bundler
-- parcel build src/index.html --public-url . --no-source-maps
+- yarn dist
 deploy:
   provider: pages
   skip-cleanup: true
