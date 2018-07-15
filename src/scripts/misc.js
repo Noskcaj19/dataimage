@@ -1,9 +1,17 @@
 /**
- * Retuns whether or not decoding output is in text mode
+ * Returns whether or not decoding output is in text mode
  * @returns {Boolean}
  */
 export function output_is_text() {
-    return $("#output_format input[name=output_format]:checked").val() == "text"
+    return $("#output_format input[name=output_format]:checked").val() === "text"
+}
+
+/**
+ * Returns whether or not encoding should use the alpha channel
+ * @returns {Boolean}
+ */
+export function should_use_alpha() {
+    return $("input[name=alpha]:checked").val() === "on"
 }
 
 /**

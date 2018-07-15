@@ -20,7 +20,7 @@ export function encode_file_changed() {
  * @param {String} string String to encode
  */
 export function update_encode_preview(string) {
-    let img = encode_string(string)
+    let img = encode_string(string, misc.should_use_alpha())
 
     if (img != null) {
         let url = img.toDataURL()
@@ -55,8 +55,10 @@ export function decode_file_changed() {
         preview.src = e.target.result
 
         Image.load(e.target.result).then(img => {
+            let use_alpha = misc.should_use_alpha()
+
             if (misc.output_is_text()) {
-                $("#decoding_output").text(decode_image(img))
+                $("#decoding_output").text(decode_image(img, use_alpha))
             } else {
 
                 let blob = new Blob([misc.remove_end_nulls(decode_image_raw(img))], { type: 'application/octet-stream' })

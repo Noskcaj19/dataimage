@@ -4,6 +4,17 @@ import { output_is_text } from './misc'
 $(function () {
     $('.menu .item').tab()
 
+    $("#alpha.ui.checkbox").checkbox({
+        onChange: function () {
+            if (output_is_text()) {
+                actions.update_encode_preview($('#text_area')[0].value)
+            } else {
+                actions.encode_file_changed()
+            }
+            actions.decode_file_changed()
+        }
+    })
+
     $('#output_format .ui.radio.checkbox').checkbox({
         onChecked: function () {
             if (output_is_text()) {

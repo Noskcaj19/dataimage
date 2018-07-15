@@ -5,21 +5,26 @@ const DEPTH = 4;
 /**
  * Encode a string to an image
  * @param {String} data - String to encode
+ * @param {Boolean} use_alpha - Use alpha channel
  * @returns {Image} Image containing the input data
  */
-export function encode_string(data) {
+export function encode_string(data, use_alpha) {
     let data_len = data.length
 
     if (data_len == 0) {
-        let canvas = $('#output')[0]
-        let ctx = canvas.getContext('2d')
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         return
     }
 
-    let size = calc_dimensisions(data_len, DEPTH);
+    let data_depth
+    if (use_alpha) {
+        data_depth = DEPTH
+    } else {
+        data_depth = 3
+    }
 
-    let array = u8array_from_str(data, data_len + amount_padding_needed(data_len, size, DEPTH))
+    let size = calc_dimensisions(data_len, data_depth);
+
+    let array = u8array_from_str(data, data_len + amount_padding_needed(data_len, size, DEPTH), use_alpha)
 
     let _canvas = document.createElement('canvas');
     _canvas.width = _canvas.height = size;
@@ -57,9 +62,10 @@ function amount_padding_needed(data_len, size, channels) {
  * Convert a string to raw ascii values in an int array
  * @param {String} data - The input string
  * @param {Number} [_length] - Optional output array length
+ * @param {Boolean} use_alpha - Use alpha channel
  * @returns {Uint8ClampedArray} Resulting data
  */
-function u8array_from_str(data, _length) {
+function u8array_from_str(data, _length, use_alpha) {
     let length = _length ? _length : data.length
     let data_length = data.length
 
@@ -69,13 +75,13 @@ function u8array_from_str(data, _length) {
     let data_index = 0
     while (i < length) {
         // TODO: Add alpha option
-        // if (((i + 1) % 4) == 0) {
-        // array[i] = 255
-        // } else {
-        if (data_index < data_length) {
-            array[i] = data[data_index++].charCodeAt(0)
+        if ((((i + 1) % 4) == 0) && !use_alpha) {
+            array[i] = 255
+        } else {
+            if (data_index < data_length) {
+                array[i] = data[data_index++].charCodeAt(0)
+            }
         }
-        // }
         i++
     }
 
