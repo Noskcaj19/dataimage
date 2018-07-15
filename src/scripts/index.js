@@ -15,7 +15,7 @@ $(function () {
         }
     })
 
-    $('#output_format .ui.radio.checkbox').checkbox({
+    $('#data_format .ui.radio.checkbox').checkbox({
         onChecked: function () {
             if (is_text_mode()) {
                 $("#output_section_text").show()
