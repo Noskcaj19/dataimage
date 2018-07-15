@@ -23,12 +23,10 @@ export function update_encode_preview(string) {
     let img = encode_string(string)
 
     if (img != null) {
-        let canvas = img.getCanvas()
-        // Make sure we can access again
-        canvas.id = "output"
-        $('#output').replaceWith(canvas)
+        let url = img.toDataURL()
+        $('#output')[0].src = url
 
-        $("#download_link")[0].href = img.toDataURL()
+        $("#download_link")[0].href = url
     }
 }
 

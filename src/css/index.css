@@ -1,3 +1,11 @@
+img.pixelated {
+    image-rendering: pixelated;
+}
+
+img {
+    border: 1px solid black;
+}
+
 canvas {
     border: 1px solid black;
     image-rendering: pixelated;
@@ -5,11 +13,11 @@ canvas {
     height: 95%;
 }
 
-img {
-    image-rendering: pixelated;
+/* Center Menu */
+.ui.menu.center.aligned a:first-child {
+    margin-left: auto;
 }
-
-#decode_preview {
-    /* width: 25vw; */
-    height: 25vw;
+  
+.ui.menu.center.aligned a:last-child {
+    margin-right: auto;
 }

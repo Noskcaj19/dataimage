@@ -20,18 +20,42 @@
 
 <body>
     <!-- Header -->
-    <div class="ui center aligned container">
-        <div class="ui bottom attached segment">
-            <h1>Data Images</h1>
+    <div class="ui container">
+        <div class="ui center aligned basic segment">
+
+            <img class="ui small inline pixelated image" src="./assets/header.png" />
+            <h1>Data Image</h1>
+
             <p>Convert anything to images</p>
         </div>
     </div>
 
     <div class="ui section divider"></div>
 
-    <div class="ui container">
+    <div class="ui center aligned container">
+        <div class="ui centered grid centered">
+            <div class="ui form">
+                <!-- Output type -->
+                <div class="fields" id="output_format">
+                    <label for="output_format">Output type</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="output_format" checked tabindex="0" class="hidden" value="file">
+                            <label>File</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="output_format" tabindex="0" class="hidden" value="text">
+                            <label>Text</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Mode tabs -->
-        <div class="ui top attached tabular menu">
+        <div class="ui top attached center aligned tabular menu">
             <a class="active item" data-tab="encode">Encode</a>
             <a class="item" data-tab="decode">Decode</a>
         </div>
@@ -40,14 +64,8 @@
             <div class="ui two column grid">
                 <!-- Encoding input -->
                 <div class="column">
-                    <!-- Encode mode tabs -->
-                    <div class="ui top attached tabular menu">
-                        <a class="active item" data-tab="text">Text Entry</a>
-                        <a class="item" data-tab="upload">Any File</a>
-                    </div>
-
                     <!-- Text encode -->
-                    <div class="ui bottom attached active tab segment" data-tab="text">
+                    <div id="encoding_text_input" class="ui segment" hidden>
                         <form class="ui form">
                             <div class="field">
                                 <label>Text</label>
@@ -57,7 +75,7 @@
                     </div>
 
                     <!-- File encode -->
-                    <div class="ui bottom attached tab segment" data-tab="upload">
+                    <div id="encoding_file_upload" class="ui segment">
                         <form class="ui form">
                             <div class="field">
                                 <input type="file" id="file_upload_encode" />
@@ -71,9 +89,7 @@
 
                 <!-- Encoding output -->
                 <div class="column">
-                    <canvas id="output" height=50 width=50>
-                        <img class="ui image" src="https://via.placeholder.com/300x300">
-                    </canvas>
+                    <img class="ui big inline pixelated image" id="output" src="./assets/transparent.gif">
                 </div>
             </div>
         </div>
@@ -90,37 +106,21 @@
                             <div class="field">
                                 <input type="file" id="file_upload_decode" accept="image/*" />
                             </div>
-                            <!-- Output type -->
-                            <div class="inline fields" id="output_format">
-                                <label for="output_format">Output type</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="output_format" checked="" tabindex="0" class="hidden" value="file">
-                                        <label>File</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="output_format" tabindex="0" class="hidden" value="text">
-                                        <label>Text</label>
-                                    </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
 
                     <!-- Image preview -->
                     <div class="column">
-                        <img id="decode_preview">
+                        <img class="ui big inline pixelated image" id="decode_preview" src="./assets/transparent.gif">
                     </div>
                 </div>
             </div>
 
             <!-- Decoding output plain text -->
-            <div hidden id="output_section_text">
+            <div id="output_section_text" hidden>
                 <form class="ui form">
                     <label>Output</label>
-                    <textarea id="decoding_output" readonly=true></textarea>
+                    <textarea id="decoding_output" readonly=true placeholder="Load an image..."></textarea>
                 </form>
             </div>
 

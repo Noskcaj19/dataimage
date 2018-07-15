@@ -8,10 +8,14 @@ $(function () {
         onChecked: function () {
             if (output_is_text()) {
                 $("#output_section_text").show()
+                $("#encoding_text_input").show()
+                $("#encoding_file_upload").hide()
                 $("#output_section_file").hide()
                 actions.decode_file_changed()
             } else {
                 $("#output_section_text").hide()
+                $("#encoding_text_input").hide()
+                $("#encoding_file_upload").show()
                 $("#output_section_file").show()
                 actions.decode_file_changed()
             }
