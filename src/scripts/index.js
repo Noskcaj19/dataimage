@@ -1,12 +1,12 @@
 import * as actions from './actions'
-import { output_is_text } from './misc'
+import { is_text_mode } from './misc'
 
 $(function () {
     $('.menu .item').tab()
 
     $("#alpha.ui.checkbox").checkbox({
         onChange: function () {
-            if (output_is_text()) {
+            if (is_text_mode()) {
                 actions.update_encode_preview($('#text_area')[0].value)
             } else {
                 actions.encode_file_changed()
@@ -17,7 +17,7 @@ $(function () {
 
     $('#output_format .ui.radio.checkbox').checkbox({
         onChecked: function () {
-            if (output_is_text()) {
+            if (is_text_mode()) {
                 $("#output_section_text").show()
                 $("#encoding_text_input").show()
                 $("#encoding_file_upload").hide()

@@ -57,7 +57,7 @@ export function decode_file_changed() {
         Image.load(e.target.result).then(img => {
             let use_alpha = misc.should_use_alpha()
 
-            if (misc.output_is_text()) {
+            if (misc.is_text_mode()) {
                 $("#decoding_output").text(decode_image(img, use_alpha))
             } else {
 
